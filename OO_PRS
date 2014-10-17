@@ -1,0 +1,92 @@
+class PaperRockScissors
+	attr_accessor :prs, :play, :comp
+	
+
+  def choose
+		system 'clear'	
+		puts "Paper Rock Scissors"
+		puts "Choose one: (P/R/S)"
+		puts ""
+		self.prs = gets.chomp.downcase
+		until prs == "p" || prs == "r" || prs == "s"
+		  system 'clear'	
+			puts "--------Try Again--------"
+			puts ""
+			puts "Paper Rock Scissors"
+			puts ""
+			puts "Choose one: (P/R/S)"
+			puts ""
+			self.prs = gets.chomp.downcase
+		end
+	end
+		
+	def comp_entry
+		arr = [0, 1, 2]
+		self.comp = arr.sample
+	end
+
+	def winnercalc
+		case prs
+		when "p"
+			case comp
+			when 0
+				puts ""
+				puts "----Computer chose Paper!----"
+				puts "It's a Tie"
+			when 1
+				puts ""
+				puts "----Computer chose Rock!----"
+				puts "Youp Win!"
+			when 2
+				puts ""
+				puts "----Computer chose Scissors!----"
+				puts "You Lose"
+			end
+		when "r"
+			case comp
+			when 0
+				puts ""
+				puts "----Computer chose Paper!----"
+				puts "You Lose"
+			when 1
+				puts ""
+				puts "----Computer chose Rock!----"
+				puts "It's a Tie"
+			when 2
+				puts ""
+				puts "----Computer chose Scissors!----"
+				puts "You Win!"
+			end
+		when "s"
+			case comp
+			when 0
+				puts ""
+				puts "----Computer chose Paper!----"
+				puts "You Win!"
+			when 1
+				puts ""
+				puts "----Computer chose Rock!----"
+				puts "You Lose"
+			when 2
+				puts ""
+				puts "----Computer chose Sicssors!----"
+				puts "It's a Tie"
+			end
+		end
+	end
+
+	def play_again?
+		puts "Play Again? (Y/N)"
+		self.play = gets.chomp.downcase
+		if play == "n" then p "Goodbye!" end
+	end
+end
+
+
+game = PaperRockScissors.new
+begin
+	game.choose
+	game.comp_entry
+	game.winnercalc
+	game.play_again?
+end until game.play == "n"
