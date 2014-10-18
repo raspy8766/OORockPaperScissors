@@ -25,7 +25,7 @@ class PaperRockScissors
 		self.comp = arr.sample
 	end
 
-	def winnercalc
+	def print_winner
 		case prs
 		when "p"
 			case comp
